@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  <title>Avatar Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>AI Avatar Generator</h1>
+
+<input
+id="prompt"
+placeholder="Describe avatar">
+
+<select id="style">
+
+<option>Anime</option>
+<option>Pixel Art</option>
+<option>3D Cartoon</option>
+<option>Cyberpunk</option>
+
+</select>
+
+<button onclick="generateAvatar()">
+Generate
+</button>
+
+<img id="result">
+
+<script src="script.js"></script>
+
+</body>
+</html>
