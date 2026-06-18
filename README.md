@@ -1,3 +1,4 @@
+#still in develpoment phase........
 # AvatarGen AI
 
 AI-powered avatar generation platform that creates unique avatars from user photos or text prompts. Users can generate avatars in different styles, preview results, download images, and manage their avatar history through a modern web interface.
