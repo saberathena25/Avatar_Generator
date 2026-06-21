@@ -27,8 +27,8 @@ router.post("/generate", async (req, res) => {
         const enhancedPrompt =
             completion.choices[0].message.content;
 
-        const imageUrl =
-            `https://image.pollinations.ai/prompt/${encodeURIComponent(enhancedPrompt)}`;
+        // Return a proxy URL pointing to our own backend instead of pollinations directly
+        const imageUrl = `http://localhost:5000/avatar/proxy-image?prompt=${encodeURIComponent(enhancedPrompt)}`;
 
         res.json({
             prompt: enhancedPrompt,
@@ -40,6 +40,28 @@ router.post("/generate", async (req, res) => {
         res.status(500).json({
             error: "Failed to generate avatar"
         });
+    }
+});
+
+router.get("/proxy-image", async (req, res) => {
+    try {
+        const { prompt } = req.query;
+        if (!prompt) return res.status(400).send("Prompt required");
+        
+        const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&nologo=true`;
+        
+        const response = await fetch(pollinationsUrl);
+        if (!response.ok) throw new Error(`Pollinations API error: ${response.status}`);
+        
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+
+        res.setHeader("Content-Type", "image/jpeg");
+    
+        res.send(buffer);
+    } catch (error) {
+        console.error("Proxy error:", error);
+        res.status(500).send("Error proxying image");
     }
 });
 
