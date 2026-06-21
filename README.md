@@ -1,7 +1,8 @@
 #still in develpoment phase........
-# AvatarGen AI
+# AvatarForge
 
 AI-powered avatar generation platform that creates unique avatars from user photos or text prompts. Users can generate avatars in different styles, preview results, download images, and manage their avatar history through a modern web interface.
+It also has a option for manual creation of avatar the old school way , do try it 
 
 ---
 
