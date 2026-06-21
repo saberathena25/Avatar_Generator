@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manual Builder - AvatarForge</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="index.html">AvatarForge</a>
+      </div>
+      <div class="nav-links">
+        <a href="ai-generator.html" class="nav-link">AI Generator</a>
+        <a href="manual-generator.html" class="nav-link active">Manual Builder</a>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+        </div>
+        <button id="signin-btn" class="btn btn-primary btn-sm">Sign In</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <div class="header-section">
+      <h1>Manual Avatar Builder</h1>
+      <p>Precision control over every aspect of your avatar's appearance.</p>
+    </div>
+
+    <div class="card card-wide">
+      <div class="builder-layout">
+        <div class="builder-controls">
+          
+          <div class="form-group">
+            <label>Avatar Style</label>
+            <select id="manual-style">
+              <option value="Circle Transparent">Circle Transparent</option>
+              <option value="Square Opaque">Square Opaque</option>
+              <option value="Rounded Corner Opaque">Rounded Corner Opaque</option>
+              <option value="Hexagon Opaque">Hexagon Opaque</option>
+              <option value="Diamond Outline">Diamond Outline</option>
+              <option value="Star Outline">Star Outline</option>
+              <option value="Shield Opaque">Shield Opaque</option>
+              <option value="Cloud Transparent">Cloud Transparent</option>
+              <option value="Heart Transparent">Heart Transparent</option>
+              <option value="Teardrop Opaque">Teardrop Opaque</option>
+              <option value="Blob Transparent">Blob Transparent</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Top (Hair)</label>
+            <select id="manual-top">
+              <option value="LongHairStraight">LongHairStraight</option>
+              <option value="ShortHairCurly">ShortHairCurly</option>
+              <option value="Bald">Bald</option>
+              <option value="LongHairBob">LongHairBob</option>
+              <option value="LongHairCurly">LongHairCurly</option>
+              <option value="ShortHairDreads">ShortHairDreads</option>
+              <option value="ShortHairFrizzle">ShortHairFrizzle</option>
+              <option value="ShortHairShaggyMullet">ShortHairShaggyMullet</option>
+              <option value="WinterHat2">WinterHat2</option>
+              <option value="Turban">Turban</option>
+              <option value="Hijab">Hijab</option>
+              <option value="Eyepatch">Eyepatch</option>
+              <option value="LongHairFro">LongHairFro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Accessories</label>
+            <select id="manual-accessories">
+              <option value="Blank">Blank</option>
+              <option value="Glasses">👓 Glasses</option>
+              <option value="Hat">Hat</option>
+              <option value="Sunglasses">Sunglasses</option>
+              <option value="RoundGlasses">Round Glasses</option>
+              <option value="AviatorGlasses">Aviator Glasses</option>
+              <option value="Earrings">Earrings</option>
+              <option value="Necklace">Necklace</option>
+              <option value="Headphones">Headphones</option>
+              <option value="VRHeadset">VR Headset</option>
+              <option value="FaceMask">Face Mask</option>
+              <option value="EyePatch">Eye Patch</option>
+              <option value="Crown">Crown</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Hair Color</label>
+            <select id="manual-haircolor">
+              <option value="BrownDark">BrownDark</option>
+              <option value="Blonde">Blonde</option>
+              <option value="Black">Black</option>
+              <option value="Auburn">Auburn</option>
+              <option value="PastelPink">Pastel Pink</option>
+              <option value="Platinum">Platinum</option>
+              <option value="Red">Red</option>
+              <option value="SilverGray">Silver Gray</option>
+              <option value="NeonGreen">Neon Green</option>
+              <option value="ElectricBlue">Electric Blue</option>
+              <option value="Purple">Purple</option>
+              <option value="White">White</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Facial Hair</label>
+            <select id="manual-facialhair">
+              <option value="Blank">Blank</option>
+              <option value="BeardMedium">BeardMedium</option>
+              <option value="BeardLight">BeardLight</option>
+              <option value="BeardMajestic">BeardMajestic</option>
+              <option value="MoustacheFancy">MoustacheFancy</option>
+              <option value="MoustacheMagnum">MoustacheMagnum</option>
+              <option value="Goatee">Goatee</option>
+              <option value="SoulPatch">Soul Patch</option>
+              <option value="Chinstrap">Chinstrap</option>
+              <option value="MuttonChops">Mutton Chops</option>
+              <option value="HandlebarMoustache">Handlebar Moustache</option>
+              <option value="FiveOClockShadow">5 O'Clock Shadow</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Clothes</label>
+            <select id="manual-clothes">
+              <option value="BlazerShirt">BlazerShirt</option>
+              <option value="Hoodie">Hoodie</option>
+              <option value="Overall">Overall</option>
+              <option value="ShirtCrewNeck">Shirt Crew Neck</option>
+              <option value="ShirtScoopNeck">Shirt Scoop Neck</option>
+              <option value="ShirtVNeck">Shirt V Neck</option>
+              <option value="GraphicTee">Graphic Tee</option>
+              <option value="CollarSweater">Collar Sweater</option>
+              <option value="JediRobe">Jedi Robe</option>
+              <option value="SpaceSuit">Space Suit</option>
+              <option value="Tuxedo">Tuxedo</option>
+              <option value="LeatherJacket">Leather Jacket</option>
+              <option value="CyberArmor">Cyber Armor</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Eyes</label>
+            <select id="manual-eyes">
+              <option value="Default">Default</option>
+              <option value="Happy">Happy</option>
+              <option value="Surprised">Surprised</option>
+              <option value="Wink">Wink</option>
+              <option value="Squint">Squint</option>
+              <option value="Dizzy">Dizzy</option>
+              <option value="Cry">Cry</option>
+              <option value="Hearts">Hearts</option>
+              <option value="Stars">Stars</option>
+              <option value="Closed">Closed</option>
+              <option value="Angry">Angry</option>
+              <option value="EyeRoll">Eye Roll</option>
+              <option value="BorgEye">Borg Eye</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Eyebrow</label>
+            <select id="manual-eyebrow">
+              <option value="Default">Default</option>
+              <option value="RaisedExcited">RaisedExcited</option>
+              <option value="Angry">Angry</option>
+              <option value="SadConcerned">SadConcerned</option>
+              <option value="Unibrow">Unibrow</option>
+              <option value="UpDown">Up Down</option>
+              <option value="Thick">Thick</option>
+              <option value="Thin">Thin</option>
+              <option value="Bushy">Bushy</option>
+              <option value="Arched">Arched</option>
+              <option value="Flat">Flat</option>
+              <option value="Missing">Missing</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Mouth</label>
+            <select id="manual-mouth">
+              <option value="Smile">Smile</option>
+              <option value="Neutral">Neutral</option>
+              <option value="Sad">Sad</option>
+              <option value="Surprised">Surprised</option>
+              <option value="Vampire">Vampire</option>
+              <option value="Eating">Eating</option>
+              <option value="Grimace">Grimace</option>
+              <option value="TongueOut">Tongue Out</option>
+              <option value="Scream">Scream</option>
+              <option value="Smirk">Smirk</option>
+              <option value="BiteLip">Bite Lip</option>
+              <option value="Pout">Pout</option>
+              <option value="Whistle">Whistle</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Skin</label>
+            <select id="manual-skin">
+              <option value="Light">Light</option>
+              <option value="Dark">Dark</option>
+              <option value="Tanned">Tanned</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Pale">Pale</option>
+              <option value="Brown">Brown</option>
+              <option value="Olive">Olive</option>
+              <option value="Albino">Albino</option>
+              <option value="AlienGreen">Alien Green</option>
+              <option value="DemonRed">Demon Red</option>
+              <option value="GhostWhite">Ghost White</option>
+              <option value="AvatarBlue">Avatar Blue</option>
+              <option value="CyberChrome">Cyber Chrome</option>
+            </select>
+          </div>
+          
+        </div>
+
+        <div class="builder-preview">
+          <button onclick="generateManualAvatar()" class="btn btn-primary w-100 mb-4">Generate Build</button>
+          
+          <div class="result-container manual-result-container">
+            <div class="spinner hidden" id="manual-spinner"></div>
+            <div class="placeholder-text" id="manual-placeholder">Select options and click Generate</div>
+            <img id="manual-result" class="hidden result-img" alt="Manual Avatar Build" />
+          </div>
+          
+          <a id="manual-download" class="btn btn-secondary w-100 hidden mt-4" href="#" download="avatar_manual.png">Download Image</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

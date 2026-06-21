@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - AvatarForge</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="index.html">AvatarForge</a>
+      </div>
+      <div class="nav-links">
+        <button class="btn btn-secondary btn-sm" onclick="window.location.href='index.html'">Back to Site</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-container" style="align-items: center; justify-content: center; min-height: 80vh; display: flex;">
+    <div class="card card-centered" style="text-align: center; max-width: 450px;">
+      <h2 style="margin-bottom: 1rem;">Sign In to AvatarForge</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Securely authenticate with Internet Identity to save your avatars across sessions.</p>
+      
+      <!-- Internet Identity widget will be injected here or handled by the script -->
+      <div id="ii-container">
+        <div class="spinner" id="ii-spinner" style="margin: 0 auto 1rem auto;"></div>
+        <p>Loading Internet Identity...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Internet Identity logic -->
+  <script src="https://identity.ic0.app/v2.0/identity.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const principalKey = 'avatarforge_principal';
+      const urlParams = new URLSearchParams(window.location.search);
+      const principal = urlParams.get('principal');
+      
+      if (principal) {
+        localStorage.setItem(principalKey, principal);
+        window.location.href = 'index.html';
+      } else {
+        // Attempt to render the widget
+        try {
+          window.ic?.identity?.create({
+            container: document.getElementById('ii-container'),
+            redirectUri: window.location.origin + '/signin.html',
+            onLogin: (principal) => {
+              localStorage.setItem(principalKey, principal);
+              window.location.href = 'index.html';
+            },
+            onLogout: () => {
+              localStorage.removeItem(principalKey);
+            }
+          });
+        } catch (e) {
+          console.error("Failed to load Internet Identity widget:", e);
+          document.getElementById('ii-container').innerHTML = "<p>Internet Identity could not be loaded. Are you running this securely?</p>";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
