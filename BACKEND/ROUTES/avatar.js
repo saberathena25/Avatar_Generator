@@ -27,7 +27,6 @@ router.post("/generate", async (req, res) => {
         const enhancedPrompt =
             completion.choices[0].message.content;
 
-        // Return a proxy URL pointing to our own backend instead of pollinations directly
         const imageUrl = `http://localhost:5000/avatar/proxy-image?prompt=${encodeURIComponent(enhancedPrompt)}`;
 
         res.json({
@@ -50,14 +49,19 @@ router.get("/proxy-image", async (req, res) => {
         
         const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=512&height=512&nologo=true`;
         
-        const response = await fetch(pollinationsUrl);
+        const response = await fetch(pollinationsUrl, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'image/jpeg'
+            }
+        });
         if (!response.ok) throw new Error(`Pollinations API error: ${response.status}`);
         
         const arrayBuffer = await response.arrayBuffer();
         const buffer = Buffer.from(arrayBuffer);
-
+        
         res.setHeader("Content-Type", "image/jpeg");
-    
+   
         res.send(buffer);
     } catch (error) {
         console.error("Proxy error:", error);
