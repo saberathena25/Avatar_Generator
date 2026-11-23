@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Generator - AvatarForge</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="index.html">AvatarForge</a>
+      </div>
+      <div class="nav-links">
+        <a href="ai-generator.html" class="nav-link active">AI Generator</a>
+        <a href="manual-generator.html" class="nav-link">Manual Builder</a>
+        <a href="ai-generator.html#history" class="nav-link">History</a>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg id="sun-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+        </div>
+        <button id="signin-btn" class="btn btn-primary btn-sm">Sign In</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-container">
+    <div class="header-section">
+      <h1>AI Avatar Generator</h1>
+      <p>Describe an avatar, or start from a photo. Prompt enhancement and extra variations run on the server, and finished images are saved.</p>
+    </div>
+
+    <div class="card card-wide">
+      <div class="form-group">
+        <label for="prompt">Description</label>
+        <textarea id="prompt" placeholder="e.g. A futuristic cyberpunk hacker with neon glasses..." rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="style">Art Style</label>
+          <select id="style">
+            <option>Anime</option>
+            <option>Pixel Art</option>
+            <option>3D Cartoon</option>
+            <option>Cyberpunk</option>
+            <option>Realistic</option>
+            <option>Watercolor</option>
+            <option>Pencil Sketch</option>
+            <option>Pop Art</option>
+            <option>Low Poly</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="variations">Variations</label>
+          <select id="variations">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Photo to avatar</label>
+        <input id="photo" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+      </div>
+
+      <label class="check-label" for="enhance">
+        <input id="enhance" type="checkbox" checked>
+        Enhance the prompt before generating
+      </label>
+
+      <button id="generate-btn" class="btn btn-primary w-100 mt-4" type="button">Generate Avatar</button>
+
+      <p id="status" class="status-line hidden" role="status"></p>
+      <p id="error" class="error-banner hidden" role="alert"></p>
+      <p id="enhanced" class="enhanced-prompt hidden"></p>
+      <div id="gallery" class="gallery"></div>
+    </div>
+
+    <section id="history-section" class="history-section">
+      <h2 id="history-title">Your avatars</h2>
+      <div id="history" class="history-list"></div>
+    </section>
+  </main>
+
+  <script src="avatar-client.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
